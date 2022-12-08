@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <main>
+        <a href="{{ url_for('main.index') }}" class="link">Назад</a>
+        <h1>Пост добавлен! </h1>
+        <div class="post">
+            <img src="{{ url_for('loader.uploaded_file', filename=image) }}" width="100%" alt="">
+            <p>{{ text }}</p>
+        </div>
+        <hr>
+        <a href="{{ url_for('loader.add_post') }}" class="button">Добавить новый пост</a>
+    </main>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <main>
+        <a href="{{ url_for('main.index') }}" class="link">Назад</a>
+        {% if posts|length > 0 %}
+            <h1>Посты по запросу "{{ look_for }}":</h1>
+            {% for post in posts %}
+                <div class="post">
+                    {% if "http" in post.pic %}
+                        <img src="{{ post.pic }}" width="100%" alt="">
+                    {% else %}
+                        <img src="{{ url_for('loader.uploaded_file', filename=post.pic) }}" width="100%" alt="">
+                    {% endif %}
+                    <p>{{ post.content }}</p>
+                </div>
+                <hr>
+            {% endfor %}
+        {% else %}
+            <h1>Постов по запросу "{{ look_for }}" не найдено!</h1>
+            <hr>
+        {% endif %}
+        <a href="{{ url_for('loader.add_post') }}" class="button">Добавить пост</a>
+    </main>
+{% endblock %}

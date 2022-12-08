@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <main>
+        <a href="{{ url_for('main.index') }}" class="link">На главную</a>
+        <h1>{{ error }}</h1>
+        <div class="post">
+            <p>{{ text }}</p>
+        </div>
+    </main>
+{% endblock %}
