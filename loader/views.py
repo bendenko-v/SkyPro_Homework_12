@@ -33,20 +33,6 @@ def post():
     if request.method == 'POST':
         image = request.files.get('picture')
         if not image:
-            """
-            вот этот момент не работает если, например, выбрать
-            файл картинки и потом заменить название перед загрузкой,
-            далее отправляешь пост и браузер просто выдаёт 
-            "Your file couldn’t be accessed
-            It may have been moved, edited, or deleted
-            ERR_FILE_NOT_FOUND".
-            то есть до этого момента проверки есть ли картинка
-            или нет не доходит в принципе!
-            не понял как решить этот момент!
-            нужно видимо где-то ловить FileNotFoundError, но как
-            это сделать на стадии от нажатия кнопки "Добавить" до
-            прихода в request.files.get('picture') не знаю.
-            """
             return render_template('post_not_uploaded.html',
                                    title='Пост не добавлен!',
                                    header='Файл изображения не найден!',
